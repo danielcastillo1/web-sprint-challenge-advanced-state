@@ -6,7 +6,8 @@ import {
   SET_QUIZ_INTO_STATE,
   SET_INFO_MESSAGE,
   INPUT_CHANGE,
-  RESET_FORM
+  RESET_FORM,
+  SET_SELECTED_ANSWER
 } from './action-types'
 
 const initialWheelState = {index: 0}
@@ -39,7 +40,12 @@ function quiz(state = initialQuizState, action) {
 
 const initialSelectedAnswerState = null
 function selectedAnswer(state = initialSelectedAnswerState, action) {
-  return state
+  switch (action.type) {
+    case SET_SELECTED_ANSWER:
+      return action.payload;
+      default:
+        return state;
+  }
 }
 
 const initialMessageState = ''

@@ -57,7 +57,6 @@ export function postAnswer(answer) {
       console.log(res.data.message)
       dispatch(setMessage(res.data.message));
       dispatch(fetchQuiz());
-      dispatch(selectAnswer(null));
     }).catch(err => {
       console.error(err);
     })
