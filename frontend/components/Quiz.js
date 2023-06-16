@@ -58,7 +58,8 @@ function Quiz(props) {
             
             <button disabled={!props.selectedAnswer} onClick={() => answerQuestion()} id="submitAnswerBtn">Submit answer</button>
           </>
-        ) : 'Loading next quiz...'
+        ) : ( 'Loading next quiz...'
+        )
       }
     </div>
   )
@@ -66,10 +67,10 @@ function Quiz(props) {
 
 const mapStateToProps = (state) => {
   return {
-    quiz: state.quiz
-    // selectedAnswer: state.selectedAnswer,
+    quiz: state.quiz,
+    selectedAnswer: state.selectedAnswer
   };
 
 }
 
-export default connect(mapStateToProps, { fetchQuiz })(Quiz);
+export default connect(mapStateToProps, { fetchQuiz, postAnswer, selectAnswer })(Quiz);
