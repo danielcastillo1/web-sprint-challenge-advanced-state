@@ -20,6 +20,7 @@ export function moveCounterClockwise(index) {
 }
 
 export function selectAnswer(answer) {
+  console.log(answer);
   return {type: SET_SELECTED_ANSWER, payload: answer}
  }
 
@@ -57,6 +58,7 @@ export function postAnswer(answer) {
       console.log(res.data.message)
       dispatch(setMessage(res.data.message));
       dispatch(fetchQuiz());
+      dispatch(selectAnswer(null));
     }).catch(err => {
       console.error(err);
     })

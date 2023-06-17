@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { fetchQuiz, postAnswer, selectAnswer } from '../state/action-creators'
 
 function Quiz(props) {
-
+ console.log(props);
   useEffect(() => {
-    props.fetchQuiz
+    props.fetchQuiz();
   }, []);
 
   const answerQuestion = () => {
@@ -33,7 +33,7 @@ function Quiz(props) {
               }
               >
                 {props.quiz.answers[0].text}
-                <button onClick={() => props.selectAnswer(props)}>
+                <button onClick={() => props.selectAnswer(props.quiz.answers[0])}>
                 { props.selectedAnswer?.answer_id ===
                   props.quiz.answers[0].answer_id
                   ? "SELECTED"
@@ -47,7 +47,7 @@ function Quiz(props) {
                   ? "answer selected"
                   : "answer"}>
                 {props.quiz.answers[1].text}
-                <button onClick={() => props.selectAnswer(props)} >
+                <button onClick={() => props.selectAnswer(props.quiz.answers[1])} >
                 { props.selectedAnswer?.answer_id ===
                   props.quiz.answers[1].answer_id
                   ? "SELECTED"
@@ -58,7 +58,8 @@ function Quiz(props) {
             
             <button disabled={!props.selectedAnswer} onClick={() => answerQuestion()} id="submitAnswerBtn">Submit answer</button>
           </>
-        ) : ( 'Loading next quiz...'
+        ) : ( 
+          'Loading next quiz...'
         )
       }
     </div>
